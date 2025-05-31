@@ -1,49 +1,66 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Animate skill bars
   const bars = document.querySelectorAll(".skill-level");
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       const bar = entry.target;
       if (entry.isIntersecting) {
-        // Animate bar when in view
         const targetWidth = bar.getAttribute("data-width");
         bar.style.width = targetWidth;
       } else {
-        // Reset width when out of view
         bar.style.width = "0%";
       }
     });
   }, { threshold: 0.5 });
 
-  bars.forEach(bar => {
-    observer.observe(bar);
+  bars.forEach(bar => observer.observe(bar));
+
+  // === DARK MODE TOGGLE ===
+  const darkToggles = document.querySelectorAll(".darkToggle");
+
+  // Load theme preference from localStorage
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark-mode");
+    darkToggles.forEach(btn => btn.textContent = "☀️");
+  } else {
+    darkToggles.forEach(btn => btn.textContent = "🌙");
+  }
+
+  // Add click event to each toggle button
+  darkToggles.forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      const isDark = document.body.classList.contains("dark-mode");
+
+      // Update icon text
+      darkToggles.forEach(b => b.textContent = isDark ? "☀️" : "🌙");
+
+      // Save preference
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+    });
+  });
+
+  // === SIDEBAR TOGGLE ===
+  window.showSidebar = function () {
+    document.querySelector(".sidebar").style.display = "flex";
+  };
+
+  window.closeSidebar = function () {
+    document.querySelector(".sidebar").style.display = "none";
+  };
+
+  // === CONTACT FORM ===
+  document.getElementById("contactForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const phone = e.target.phone.value;
+    const message = e.target.message.value;
+    alert(`Thank you, ${name}! We'll reach out at ${email} or ${phone}.\nMessage: ${message}`);
+    e.target.reset();
   });
 });
-// Dark mode toggle
-const toggle = document.getElementById("darkToggle");
-toggle.addEventListener("click", () => {
-  document.body.classList.toggle("dark-mode");
-});
 
-// Contact form submission
-document.getElementById("contactForm").addEventListener("submit", (e) => {
-  e.preventDefault();
-  const name = e.target.name.value;
-  const email = e.target.email.value;
-  const phone = e.target.phone.value;
-  const message = e.target.message.value;
-  alert(`Thank you, ${name}! We'll reach out at ${email} or ${phone}.\nMessage: ${message}`);
-  e.target.reset();
-});
-
-// Mobile menu toggle
-const mobileMenu = document.getElementById("mobile-menu");
-const navLinks = document.getElementById("navLinks");
-mobileMenu.addEventListener("click", () => {
-  navLinks.classList.toggle("active");
-  // setTimeout(() => {
-  //   navLinks.classList.toggle("show");
-  // }, 10);
-});
 
 
