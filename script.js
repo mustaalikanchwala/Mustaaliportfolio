@@ -49,6 +49,27 @@ document.addEventListener("DOMContentLoaded", () => {
   window.closeSidebar = function () {
     document.querySelector(".sidebar").style.display = "none";
   };
+  // Close sidebar when clicking outside of it
+document.addEventListener("click", (event) => {
+  const sidebar = document.querySelector(".sidebar");
+  const sidebarToggle = document.querySelector(".menu-button"); // Change selector if needed
+
+  if (
+    sidebar.style.display === "flex" &&
+    !sidebar.contains(event.target) &&
+    !sidebarToggle.contains(event.target)
+  ) {
+    closeSidebar();
+  }
+});
+
+// Close sidebar when clicking any anchor inside it
+document.querySelectorAll(".sidebar a").forEach(link => {
+  link.addEventListener("click", () => {
+    closeSidebar();
+  });
+});
+
 
   // === CONTACT FORM ===
   document.getElementById("contactForm").addEventListener("submit", (e) => {
