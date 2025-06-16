@@ -231,31 +231,59 @@ section[id] {
 
 /* Skills section */
 .skills-container {
-  width: 300px;
-  padding: 20px;
-  font-family: Arial, sans-serif;
-}
-
-.skill {
-  margin-bottom: 20px;
-}
-
-.skill-bar {
+  max-width: 400px;
   width: 100%;
-  background-color: #eee;
-  height: 10px;
-  border-radius: 5px;
-  overflow: hidden;
+  padding: 1rem;
 }
 
-.skill-level {
-  height: 100%;
-  background-color: #928dab;
-  width: 0;
-  border-radius: 5px;
-  transition: width 0.4s ease-out;
+.skills-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 1rem;
 }
 
+.skill-card {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.skill-card i {
+  font-size: 1.5rem;
+  color: #928dab;
+}
+
+.skill-card p {
+  margin: 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+body.dark-mode .skill-card {
+  background-color: #2c2c2c;
+  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .skill-card p {
+  color: #f0f0f0;
+}
+
+body.dark-mode .skill-card i {
+  color: #ffd700;
+}
+
+/* Experience section */
 .experience-item {
   background-color: #fff;
   padding: 1rem;
@@ -411,7 +439,7 @@ body.dark-mode footer {
     font-size: 1.2rem;
   }
   .skills-container {
-    width: 100%;
+    max-width: 100%;
     padding: 1rem;
   }
 

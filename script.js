@@ -1,23 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Animate skill bars
-  const bars = document.querySelectorAll(".skill-level");
 
-  const skillObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        const bar = entry.target;
-        if (entry.isIntersecting) {
-          const targetWidth = bar.getAttribute("data-width");
-          bar.style.width = targetWidth;
-        } else {
-          bar.style.width = "0%";
-        }
-      });
-    },
-    { threshold: 0.5 }
-  );
-
-  bars.forEach((bar) => skillObserver.observe(bar));
 
   // Navbar link click handling
   document.querySelectorAll(".nav-link").forEach((link) => {
