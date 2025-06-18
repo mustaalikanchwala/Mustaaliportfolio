@@ -1,28 +1,22 @@
 document.addEventListener("DOMContentLoaded", () => {
-
-
   // Navbar link click handling
   document.querySelectorAll(".nav-link").forEach((link) => {
     link.addEventListener("click", (e) => {
       e.preventDefault();
       const targetId = link.getAttribute("href").substring(1);
       const targetSection = document.getElementById(targetId);
-
-      // Scroll to section
       targetSection.scrollIntoView({ behavior: "smooth" });
     });
   });
 
   // Dark mode toggle
   const darkToggles = document.querySelectorAll(".darkToggle");
-
   if (localStorage.getItem("theme") === "dark") {
     document.body.classList.add("dark-mode");
     darkToggles.forEach((btn) => (btn.textContent = "☀️"));
   } else {
     darkToggles.forEach((btn) => (btn.textContent = "🌙"));
   }
-
   darkToggles.forEach((btn) => {
     btn.addEventListener("click", () => {
       document.body.classList.toggle("dark-mode");
@@ -36,16 +30,12 @@ document.addEventListener("DOMContentLoaded", () => {
   window.showSidebar = function () {
     document.querySelector(".sidebar").style.display = "flex";
   };
-
   window.closeSidebar = function () {
     document.querySelector(".sidebar").style.display = "none";
   };
-
-  // Close sidebar when clicking outside
   document.addEventListener("click", (event) => {
     const sidebar = document.querySelector(".sidebar");
     const sidebarToggle = document.querySelector(".menu-button");
-
     if (
       sidebar.style.display === "flex" &&
       !sidebar.contains(event.target) &&
@@ -54,8 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
       closeSidebar();
     }
   });
-
-  // Close sidebar when clicking any anchor inside it
   document.querySelectorAll(".sidebar a").forEach((link) => {
     link.addEventListener("click", () => {
       closeSidebar();
@@ -74,4 +62,38 @@ document.addEventListener("DOMContentLoaded", () => {
     );
     e.target.reset();
   });
+
+  // Animation handling with IntersectionObserver
+  const animateElements = document.querySelectorAll(".animate-section .animate__animated");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const element = entry.target;
+          if (element.tagName === "H2") {
+            element.classList.add("animate__fadeInDown");
+          } else if (element.classList.contains("home-links")) {
+            element.classList.add("animate__fadeInUp");
+          } else if (element.classList.contains("skill-card")) {
+            element.classList.add("animate__fadeInRight");
+          } else if (element.classList.contains("education-item") || element.classList.contains("experience-item")) {
+            element.classList.add("animate__fadeInLeft");
+          } else if (element.classList.contains("project-card")) {
+            element.classList.add("animate__fadeInUp");
+          } else if (element.tagName === "IMG") {
+            element.classList.add("animate__zoomIn");
+          } else if (element.tagName === "FORM") {
+            element.classList.add("animate__fadeInUp");
+          } else if (element.parentElement.classList.contains("footer-container")) {
+            element.classList.add("animate__fadeInUp");
+          } else {
+            element.classList.add("animate__fadeIn");
+          }
+          observer.unobserve(element); // Stop observing once animated
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+  animateElements.forEach((element) => observer.observe(element));
 });

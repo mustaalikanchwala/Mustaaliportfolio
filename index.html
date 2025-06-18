@@ -17,12 +17,16 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="style.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <header>
       <nav>
-        <div class="logo">Mustaali Kanchwala...</div>
+        <div class="logo">Mustaali Kanchwala</div>
         <ul class="sidebar">
           <li onclick="closeSidebar()">
             <a href="#closeSidebar"><i class="fa-solid fa-xmark"></i></a>
@@ -31,6 +35,7 @@
           <li><a href="#about" class="nav-link">About</a></li>
           <li><a href="#education" class="nav-link">Education</a></li>
           <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
           <li><a href="#experience" class="nav-link">Experience</a></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
           <li><button class="darkToggle">🌙</button></li>
@@ -43,6 +48,9 @@
           </li>
           <li class="hidelinks">
             <a href="#skills" class="nav-link">Skills</a>
+          </li>
+          <li class="hidelinks">
+            <a href="#projects" class="nav-link">Projects</a>
           </li>
           <li class="hidelinks">
             <a href="#experience" class="nav-link">Experience</a>
@@ -58,12 +66,10 @@
       </nav>
     </header>
 
-    <div class="blur-overlay"></div>
-
-    <section id="home">
-      <h1>Hello, I'm Mustaali Kanchwala</h1>
-      <p>Software Developer</p>
-      <div class="home-links">
+    <section id="home" class="animate-section">
+      <h1 class="animate__animated">Hello, I'm Mustaali Kanchwala</h1>
+      <p class="animate__animated">Software Developer</p>
+      <div class="home-links animate__animated">
         <a href="https://www.linkedin.com/feed/" target="_blank"
           >LinkedIn <i class="fa-brands fa-linkedin"></i>
         </a>
@@ -74,107 +80,100 @@
       </div>
     </section>
 
-    <section id="about">
-      <h2>About Me</h2>
+    <section id="about" class="animate-section">
+      <h2 class="animate__animated">About Me</h2>
       <div class="about-container">
-        <img src="mustaali.jpg" alt="Mustaali Kanchwala" />
-        <p>
-          I'm Mustaali, As a student of B.E. Information Technology at Mumbai
-          University, I'm proactively developing a solid foundation in Java
-          development as well as web technologies such as HTML, CSS, and
-          JavaScript. I like to write clean, logical code and use technology to
-          solve real-world issues. I've had a keen interest in backend
-          development with Java and designing responsive frontends over time.
-          Whether developing a simple user interface or object-oriented
-          programming with Java, I'm always looking to learn and get better.
-          Currently, I'm concentrating on growing my capabilities with practical
-          projects, ongoing study, and team working. Software development,
-          full-stack projects, and working experiences where I have to use Java
-          in practical implementation are particularly appealing to me. Open to
-          internships or trainee roles where I can grow as a developer,
-          contribute to a team, and gain industry experience. If you’re looking
-          for a motivated learner with a strong technical base and a passion for
-          building things, let’s connect!
+        <img src="mustaali.jpg" alt="Mustaali Kanchwala" class="animate__animated" />
+        <p class="animate__animated">
+          I'm Mustaali, a B.E. Information Technology student at Mumbai
+          University, building a strong foundation in Java and web technologies
+          like HTML, CSS, and JavaScript. I enjoy writing clean, efficient code
+          to solve real-world problems. My passion lies in backend development
+          with Java and crafting responsive, user-friendly frontends. I’m
+          constantly learning through practical projects, collaboration, and
+          exploring new technologies. I’m eager to contribute to full-stack
+          projects and gain industry experience through internships or trainee
+          roles. Let’s connect to build something amazing!
         </p>
       </div>
     </section>
-    <section id="education">
-      <h2>Education</h2>
+
+    <section id="education" class="animate-section">
+      <h2 class="animate__animated">Education</h2>
       <div class="education-container">
-        <div class="education-item">
+        <div class="education-item animate__animated">
           <h3>Bachelor of Engineering in IT</h3>
-          <p class="school">SLRTCE || MUMBAI UNIVERSITY</p>
+          <p class="school">SLRTCE, Mumbai University</p>
           <p class="duration">2024 - 2028</p>
-          <p class="sgpa">SGPA=7.65</p>
+          <p class="sgpa">SGPA: 7.65</p>
           <p class="description">
-            Focused on Data Structures, Web Development, and UI/UX. Active
-            participant in tech fests and coding competitions.
+            Focused on Data Structures, Web Development, and UI/UX. Active in
+            tech fests and coding competitions.
           </p>
         </div>
-
-        <div class="education-item">
+        <div class="education-item animate__animated">
           <h3>HSC</h3>
-          <p class="school">ROYAL COLLEGE OF ARTS SCIENCE AND COMMERCE</p>
+          <p class="school">Royal College of Arts, Science and Commerce</p>
           <p class="duration">2022 - 2024</p>
-          <p class="score">SCORE=78%</p>
+          <p class="score">Score: 78%</p>
           <p class="description">
-            Completed with Science stream, specializing in PCM with Economics.
+            Science stream, specializing in PCM with Economics.
           </p>
         </div>
       </div>
     </section>
 
-    <section id="skills">
-      <h2>Skills</h2>
+    <section id="skills" class="animate-section">
+      <h2 class="animate__animated">Skills</h2>
       <div class="skills-container">
         <table class="skills-table">
           <tbody>
             <tr>
-              <td class="skill-card">
-                <i class="fa-brands fa-html5"></i>
-                <p>HTML</p>
-              </td>
-            </tr>
-            <tr>
-              <td class="skill-card">
-                <i class="fa-brands fa-css3-alt"></i>
-                <p>CSS</p>
-              </td>
-            </tr>
-            <tr>
-              <td class="skill-card">
-                <i class="fa-brands fa-js"></i>
-                <p>JavaScript</p>
-              </td>
-            </tr>
-            <tr>
-              <td class="skill-card">
-                <i class="fa-brands fa-bootstrap"></i>
-                <p>Bootstrap</p>
-              </td>
-            </tr>
-            <tr>
-              <td class="skill-card">
+              <td class="skill-card animate__animated">
                 <i class="fa-brands fa-java"></i>
                 <p>Java</p>
               </td>
             </tr>
             <tr>
-              <td class="skill-card">
+              <td class="skill-card animate__animated">
+                <i class="fa-brands fa-js"></i>
+                <p>JavaScript</p>
+              </td>
+            </tr>
+            <tr>
+              <td class="skill-card animate__animated">
+                <i class="fa-solid fa-database"></i>
+                <p>SQL</p>
+              </td>
+            </tr>
+            <tr>
+              <td class="skill-card animate__animated">
                 <i class="fa-solid fa-c"></i>
                 <p>C</p>
               </td>
             </tr>
             <tr>
-              <td class="skill-card">
+              <td class="skill-card animate__animated">
                 <i class="fa-solid fa-code"></i>
                 <p>C#</p>
               </td>
             </tr>
             <tr>
-              <td class="skill-card">
-                <i class="fa-solid fa-database"></i>
-                <p>SQL</p>
+              <td class="skill-card animate__animated">
+                <i class="fa-brands fa-html5"></i>
+                <p>HTML</p>
+              </td>
+            </tr>
+            <tr>
+              <td class="skill-card animate__animated">
+                <i class="fa-brands fa-css3-alt"></i>
+                <p>CSS</p>
+              </td>
+            </tr>
+            <tr>
+              <td class="skill-card animate__animated">
+                <i class="fa-brands fa-bootstrap"></i>
+                <p>Bootstrap</p>
               </td>
             </tr>
           </tbody>
@@ -182,25 +181,53 @@
       </div>
     </section>
 
-    <section id="experience">
-      <h2>Work Experience</h2>
-      <div class="experience-item">
-        <h3>Backend Developer</h3>
+    <section id="projects" class="animate-section">
+      <h2 class="animate__animated">Projects</h2>
+      <div class="projects-container">
+        <div class="project-card animate__animated">
+          <h3>BMI Calculator</h3>
+          <p class="project-description">“Building this BMI Calculator pushed me to deepen my understanding of HTML structure, CSS styling, and JavaScript logic—all while emphasizing clean code, user experience, and responsive design.”</p>
+          <div class="project-overlay">
+            <p>A beginner‑friendly BMI Calculator built with semantic HTML, responsive CSS, and vanilla JavaScript.</p>
+            <a href="https://mustaalikanchwala.github.io/BMI-Calculator/" target="_blank" class="project-link">Visit Project</a>
+          </div>
+        </div>
+        <div class="project-card animate__animated">
+          <h3>Portfolio Website</h3>
+          <p class="project-description">A personal portfolio showcasing my skills and projects, built with HTML, CSS, JavaScript, and Bootstrap for a responsive design.</p>
+          <div class="project-overlay">
+            <p>This very website! Designed with a focus on clean UI, animations, and accessibility.</p>
+            <a href="https://mustaalikanchwala.github.io/Mustaaliportfolio/" target="_blank" class="project-link">Visit Project</a>
+          </div>
+        </div>
+        <div class="project-card animate__animated">
+          <h3>BG-Colour-Change</h3>
+          <p class="project-description">“Building this simple color switcher pushed me to dig into HTML structure, CSS custom properties, and JavaScript event handling—turning a blank canvas into an interactive playground.”</p>
+          <div class="project-overlay">
+            <p>A beginner‑friendly background color changer showcasing semantic HTML, CSS variables with smooth transitions, and vanilla JavaScript event handling</p>
+            <a href="https://mustaalikanchwala.github.io/BG-Colour-Change/" target="_blank" class="project-link">Visit Project</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="animate-section">
+      <h2 class="animate__animated">Work Experience</h2>
+      <div class="experience-item animate__animated">
+        <h3>Backend Developer Intern</h3>
         <p>
-          Currently working as a Backend Intern using .NET (C#), contributing to
-          the development of server-side logic and API integration for web
-          applications. Assisting with SQL Server tasks such as writing queries,
-          inserting data, and supporting basic database operations.
-          Collaborating with the development team, participating in code
-          reviews, and learning backend architecture and best practices in a
-          real-time project environment
+          Developing server-side logic and API integration using .NET (C#).
+          Assisting with SQL Server tasks, including writing queries and managing
+          data. Collaborating with the team, participating in code reviews, and
+          learning backend architecture best practices in a real-world project
+          environment.
         </p>
       </div>
     </section>
 
-    <section id="contact">
-      <h2>Contact Me</h2>
-      <form id="contactForm">
+    <section id="contact" class="animate-section">
+      <h2 class="animate__animated">Contact Me</h2>
+      <form id="contactForm" class="animate__animated">
         <input type="text" name="name" placeholder="Your Name" required />
         <input type="email" name="email" placeholder="Your Email" required />
         <input
@@ -214,23 +241,24 @@
       </form>
     </section>
 
-    <footer>
+    <footer class="animate-section">
       <div class="footer-container">
-        <div class="footer-logo">
+        <div class="footer-logo animate__animated">
           <i class="fas fa-code"></i> Mustaali Kanchwala
         </div>
-        <div class="footer-nav">
+        <div class="footer-nav animate__animated">
           <h3>Quick Links</h3>
           <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#education">Education</a></li>
             <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
         </div>
-        <div class="footer-social">
+        <div class="footer-social animate__animated">
           <h3>Connect with Me</h3>
           <ul>
             <li>
@@ -250,14 +278,16 @@
             </li>
           </ul>
         </div>
-        <div class="footer-contact">
+        <div class="footer-contact animate__animated">
           <h3>Contact Info</h3>
-          <p><i class="fas fa-map-marker-alt"></i> Mumbai, Maharashtra, India</p>
-          <p><i class="fas fa-envelope"></i>kanchwalamustaali@gmail.com</p>
+          <p>
+            <i class="fas fa-map-marker-alt"></i> Mumbai, Maharashtra, India
+          </p>
+          <p><i class="fas fa-envelope"></i> kanchwalamustaali@gmail.com</p>
           <p><i class="fas fa-phone"></i> +91 9076212155</p>
         </div>
       </div>
-      <div class="footer-copyright">
+      <div class="footer-copyright animate__animated">
         <p>© 2025 Mustaali Kanchwala. All rights reserved.</p>
       </div>
     </footer>
