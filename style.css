@@ -357,7 +357,7 @@ body.dark-mode .project-card .project-description {
   background-color: #eab308;
   transform: translateY(-3px);
 }
-
+/* 
 .experience-item {
   background-color: white;
   padding: 2rem;
@@ -385,7 +385,7 @@ body.dark-mode .experience-item {
 }
 body.dark-mode .experience-item p {
   color: #d1d5db;
-}
+} */
 
 form {
   display: flex;
