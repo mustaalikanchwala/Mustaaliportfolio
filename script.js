@@ -51,17 +51,27 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Contact form
-  document.getElementById("contactForm").addEventListener("submit", (e) => {
-    e.preventDefault();
-    const name = e.target.name.value;
-    const email = e.target.email.value;
-    const phone = e.target.phone.value;
-    const message = e.target.message.value;
-    alert(
-      `Thank you, ${name}! We'll reach out at ${email} or ${phone}.\nMessage: ${message}`
-    );
+document.getElementById("contactForm").addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const name = e.target.name.value;
+  const email = e.target.email.value;
+  const phone = e.target.phone.value;
+  const message = e.target.message.value;
+
+  // Send email using EmailJS
+  emailjs.send("service_0w42zxx", "template_el48m85", {
+    name: name,
+    email: email,
+    phone: phone,
+    message: message
+  }).then(() => {
+    alert(`Thank you, ${name}! We'll reach out at ${email} or ${phone}.\nMessage: ${message}`);
     e.target.reset();
+  }).catch((error) => {
+    alert("Failed to send message. Please try again.\n" + JSON.stringify(error));
   });
+});
 
   // Animation handling with IntersectionObserver
   const animateElements = document.querySelectorAll(".animate-section .animate__animated");
