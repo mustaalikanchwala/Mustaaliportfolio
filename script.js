@@ -1,4 +1,35 @@
 document.addEventListener("DOMContentLoaded", () => {
+// =======================================================================
+const popup = document.getElementById('welcome-popup');
+let autoCloseTimeout;
+
+function closePopup() {
+  popup.classList.remove('visible');
+  // Clean up event listeners and timer after close
+  popup.removeEventListener('click', handleClose);
+  document.removeEventListener('keydown', handleClose);
+  clearTimeout(autoCloseTimeout);
+}
+
+function handleClose() {
+  closePopup();
+}
+
+function showPopup() {
+  popup.classList.add('visible');
+  // Allow user to close popup by clicking anywhere or pressing any key
+  popup.addEventListener('click', handleClose);
+  document.addEventListener('keydown', handleClose);
+  // Auto-close after 3 seconds
+  autoCloseTimeout = setTimeout(closePopup, 3000);
+}
+
+// Show on load
+showPopup();
+
+
+// ========================================================================
+
   // Navbar link click handling
   document.querySelectorAll(".nav-link").forEach((link) => {
     link.addEventListener("click", (e) => {
@@ -25,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.setItem("theme", isDark ? "dark" : "light");
     });
   });
-
+ 
   // Sidebar toggle
   window.showSidebar = function () {
     document.querySelector(".sidebar").style.display = "flex";

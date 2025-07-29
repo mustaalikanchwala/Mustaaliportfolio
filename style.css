@@ -10,7 +10,88 @@ body.dark-mode {
   background-color: #111827;
   color: #e5e7eb;
 }
+/* ============================================================================================ */
 
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent; /* Fully transparent background (no dimming) */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000; /* Above navbar and sidebar */
+  opacity: 0;
+  transition: opacity 0.5s ease; /* Smooth fade in/out */
+  visibility: hidden;
+  backdrop-filter: blur(10px); /* Blurs the content behind the popup */
+}
+
+.popup-overlay.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+.popup-content {
+  background: transparent; /* Transparent background for full-screen effect */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0; /* No padding for full-screen */
+  border-radius: 0; /* No rounded corners */
+  box-shadow: none; /* No shadow */
+}
+
+body.dark-mode .popup-content {
+  background: transparent; /* Keep transparent in dark mode */
+  color: #e5e7eb;
+}
+
+.popup-content h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.popup-content p {
+  font-size: 1.2rem; /* Slightly larger for better visibility on full screen */
+  margin-bottom: 1rem;
+}
+
+.popup-content button {
+  margin-top: 1rem;
+  padding: 0.8rem 1.5rem;
+  background: #3b82f6; /* Matches your nav gradient */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.popup-content button:hover {
+  background: #facc15; /* Hover effect from your styles */
+}
+
+@media (max-width: 768px) {
+  .popup-content h2 {
+    font-size: 1.5rem; /* Adjust for smaller screens */
+  }
+  .popup-content p {
+    font-size: 1rem;
+  }
+}
+
+
+
+
+/* ======================================================================================= */
 nav {
   background: linear-gradient(to right, #1e3a8a, #3b82f6);
   display: flex;
