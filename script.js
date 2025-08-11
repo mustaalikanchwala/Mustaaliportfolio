@@ -31,14 +31,50 @@ showPopup();
 // ========================================================================
 
   // Navbar link click handling
-  document.querySelectorAll(".nav-link").forEach((link) => {
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
-      const targetId = link.getAttribute("href").substring(1);
-      const targetSection = document.getElementById(targetId);
-      targetSection.scrollIntoView({ behavior: "smooth" });
-    });
+  // document.querySelectorAll(".nav-link").forEach((link) => {
+  //   link.addEventListener("click", (e) => {
+  //     e.preventDefault();
+  //     const targetId = link.getAttribute("href").substring(1);
+  //     const targetSection = document.getElementById(targetId);
+  //     targetSection.scrollIntoView({ behavior: "smooth" });
+  //   });
+  // });
+
+document.querySelectorAll(".nav-link").forEach((link) => {
+  link.addEventListener("click", (e) => {
+    e.preventDefault();
+    const targetId = link.getAttribute("href").substring(1);
+    const targetSection = document.getElementById(targetId);
+    
+    // Show loader
+    const loader = document.getElementById("loader");
+    loader.classList.add("active");
+    
+    // Trigger smooth scroll
+    targetSection.scrollIntoView({ behavior: "smooth" });
+    
+    // Hide loader after scroll (with timeout fallback)
+    let scrollTimeout;
+    const hideLoader = () => {
+      loader.classList.remove("active");
+      window.removeEventListener("scroll", handleScrollEnd);
+    };
+    
+    const handleScrollEnd = () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(hideLoader, 200); // 200ms debounce to detect scroll end
+    };
+    
+    window.addEventListener("scroll", handleScrollEnd);
+    
+    // Fallback timeout in case scroll is very short
+    setTimeout(hideLoader, 800); // Adjust based on your scroll duration
   });
+});
+
+
+
+  // ===========================================================================
 
   // Dark mode toggle
   const darkToggles = document.querySelectorAll(".darkToggle");

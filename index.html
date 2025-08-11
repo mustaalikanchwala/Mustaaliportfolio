@@ -22,7 +22,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
     <link rel="stylesheet" href="style.css" />
-    <link rel="icon" type="image/png" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" href="assets/favicon_io/favicon-32x32.png">
   </head>
   <body>
     <!-- ============================================================================ -->
@@ -33,6 +33,11 @@
    <h2>"Welcome! Take a look at my work and feel free to get in touch."</h2>
     <!-- No button here now -->
   </div>
+</div>
+
+<!-- =================================================================================== -->
+<div id="loader" class="loader-overlay">
+  <div class="loader-orb"></div>
 </div>
 
 
@@ -92,14 +97,14 @@
         <a href="https://leetcode.com/u/MustaaliKanchwala/" target="_blank"
           >LeetCode <i class="fas fa-code"></i>
         </a>
-        <a href="MK_info/MustaaliCV.pdf" download>Download Resume <i class="fa-regular fa-file"></i></a>
+        <a href="assets/MK_info/MustaaliCV.pdf" download>Download Resume <i class="fa-regular fa-file"></i></a>
       </div>
     </section>
 
     <section id="about" class="animate-section">
       <h2 class="animate__animated">About Me</h2>
       <div class="about-container">
-        <img src="MK_info/mustaali.jpg" alt="Mustaali Kanchwala" class="animate__animated" />
+        <img src="/assets/MK_info/mustaali.jpg" alt="Mustaali Kanchwala" class="animate__animated" />
         <p class="animate__animated">
           I'm Mustaali, a B.E. Information Technology student at Mumbai
           University, building a strong foundation in Java and web technologies
@@ -248,12 +253,28 @@
             <a href="https://weather-forecast-two-nu.vercel.app/" target="_blank" class="project-link">Visit Project</a>
           </div>
         </div>
+        <div class="project-card animate__animated">
+          <h3>TiwariFroge</h3>
+          <p class="project-description">A modern React-based college website for Shree LR Tiwari College of Engineering featuring events, festivals, hackathons, clubs, and community sections. Built with Vite, Tailwind CSS, Framer Motion animations, and Supabase backend. Includes user authentication, join forms, responsive design, and smooth page transitions for an engaging student experience.</p>
+          <div class="project-overlay">
+            <p>A comprehensive React college website with events management, club/community sections, user authentication, and modern animations built using Vite, Tailwind CSS, and Supabase.</p>
+            <a href="https://mustaalikanchwala.github.io/Digital-Clock/" target="_blank" class="project-link">Visit Project</a>
+          </div>
+        </div>
          <div class="project-card animate__animated">
             <h3>Portfolio Website</h3>
             <p class="project-description">A personal portfolio showcasing my skills and projects, built with HTML, CSS, JavaScript, and Bootstrap for a responsive design.</p>
             <div class="project-overlay">
               <p>This very website! Designed with a focus on clean UI, animations, and accessibility.</p>
               <a href="https://mustaaliportfolio.vercel.app/" target="_blank" class="project-link">Visit Project</a>
+            </div>
+          </div>
+          <div class="project-card animate__animated">
+            <h3>ToDo</h3>
+            <p class="project-description">“A dynamic React To-Do app using Context API and localStorage to add, edit, delete, and complete tasks with instant visual feedback like strikethrough and color changes. Data persists across sessions, ensuring seamless productivity tracking and an organized workflow every time you open the app.”</p>
+            <div class="project-overlay">
+              <p>React To-Do app with Context API and localStorage for persistent, real-time task management and visual updates.</p>
+              <a href="https://todo-z07g.onrender.com" target="_blank" class="project-link">Visit Project</a>
             </div>
           </div>
         <div class="project-card animate__animated">
@@ -273,27 +294,11 @@
           </div>
         </div>
         <div class="project-card animate__animated">
-          <h3>DIGITAL ClOCK</h3>
-          <p class="project-description">This Digital Clock project uses HTML, CSS, and JavaScript to show real-time hours, minutes, and seconds. It enhances skills in DOM manipulation, Date object, setInterval(), and UI design. It’s ideal for beginners to build logic, formatting, and styling skills while creating a dynamic, real-time web app.</p>
-          <div class="project-overlay">
-            <p>A beginner-friendly digital clock project using HTML, CSS, and JavaScript that builds real-time logic, DOM manipulation, and UI design skills.</p>
-            <a href="https://mustaalikanchwala.github.io/Digital-Clock/" target="_blank" class="project-link">Visit Project</a>
-          </div>
-        </div>
-        <div class="project-card animate__animated">
           <h3>BG-Colour-Change</h3>
           <p class="project-description">“A background color change feature in React allows users to switch the page's background dynamically using buttons. It uses `useState` to manage the current color and updates the CSS style on change, making the UI interactive and visually engaging. Ideal for themes or personalization.”</p>
           <div class="project-overlay">
             <p>A React feature to dynamically change background color using state for interactive UI.</p>
             <a href="https://bg-change-react-izg2.vercel.app/" target="_blank" class="project-link">Visit Project</a>
-          </div>
-        </div>
-        <div class="project-card animate__animated">
-          <h3>Unlimited Colour</h3>
-          <p class="project-description">“The Unlimited Background Colors project changes the background continuously on clicking start and stops on clicking stop. It creates a smooth, dynamic visual effect by switching colors at regular intervals, making it a fun and interactive way to explore creative design and JavaScript functionality.”</p>
-          <div class="project-overlay">
-            <p>The Unlimited Background Colors project uses JavaScript to create a dynamic, continuously changing background on clicking start and stops it on clicking stop, offering a fun and interactive design experience.</p>
-            <a href="https://mustaalikanchwala.github.io/Unlimited-BG-Colour/" target="_blank" class="project-link">Visit Project</a>
           </div>
         </div>
         <div class="project-card animate__animated">
@@ -333,7 +338,11 @@
           required
         />
         <textarea name="message" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
+       <button class="send-button" type="submit">
+  <img src="assets/icons/message.gif" alt="Send Icon" width="20" height="20">
+  <span>Send Message</span>
+</button>
+
       </form>
     </section>
 
