@@ -82,6 +82,7 @@ body.dark-mode .popup-content {
 @media (max-width: 768px) {
   .popup-content h2 {
     font-size: 1.5rem; /* Adjust for smaller screens */
+    padding: 2rem;
   }
   .popup-content p {
     font-size: 1rem;
@@ -421,8 +422,12 @@ body.dark-mode #projects {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   max-width: 1200px;
+  max-height: 700px;
   width: 100%;
-  padding: 1rem;
+  padding: 2rem;
+  border: 2px solid #111827;
+  border-radius: 20px;
+  overflow: auto;
 }
 .project-card {
   position: relative;
@@ -694,6 +699,8 @@ body.dark-mode footer {
   .projects-container {
     grid-template-columns: 1fr;
     padding: 1rem;
+    margin-left: 20px;
+    margin-right: 20px;
   }
   #home h1 {
     font-size: 2.2rem;
@@ -731,6 +738,9 @@ body.dark-mode footer {
   }
   .footer-logo i {
     font-size: 1.8rem;
+  }
+  .projects-container{
+   padding: 1rem;
   }
   .project-card {
     padding: 1.5rem;
