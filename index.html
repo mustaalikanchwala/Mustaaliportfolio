@@ -1,417 +1,915 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mustaali Kanchwala | Portfolio</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="icon" type="image/png" href="assets/favicon_io/favicon-32x32.png">
-  </head>
-  <body>
-    <!-- ============================================================================ -->
-  <div id="welcome-popup" class="popup-overlay">
-  <div class="popup-content animate__animated animate__zoomIn">
-    <!-- <h2>Welcome to my portfolio</h2>
-    <p>I'm Mustaali, a B.E. Information Technology student. Explore my skills, projects, and more!</p> -->
-   <h2>"Welcome! Take a look at my work and feel free to get in touch."</h2>
-    <!-- No button here now -->
-  </div>
-</div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mustaali Kanchwala - Software Developer Portfolio. B.E. IT Student specializing in Java, Web Development, and Full-Stack Solutions.">
+    <meta name="keywords" content="Software Developer, Java Developer, Web Developer, Full Stack, React, Portfolio">
+    <meta name="author" content="Mustaali Kanchwala">
+    <title>Mustaali Kanchwala | Software Developer</title>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #8b5cf6;
+            --accent: #f59e0b;
+            --bg-light: #ffffff;
+            --bg-dark: #0f172a;
+            --text-light: #1e293b;
+            --text-dark: #e2e8f0;
+            --card-light: #f8fafc;
+            --card-dark: #1e293b;
+            --border-light: #e2e8f0;
+            --border-dark: #334155;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-<!-- =================================================================================== -->
-<div id="loader" class="loader-overlay">
-  <div class="loader-orb"></div>
-</div>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-light);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: var(--transition);
+        }
 
-<!-- ====================================================================================== -->
+        body.dark {
+            --bg-light: #0f172a;
+            --bg-dark: #020617;
+            --text-light: #e2e8f0;
+            --text-dark: #94a3b8;
+            --card-light: #1e293b;
+            --card-dark: #0f172a;
+            --border-light: #334155;
+            --border-dark: #1e293b;
+        }
+
+        /* Loading Animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader-content {
+            text-align: center;
+        }
+
+        .code-brackets {
+            font-size: 4rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.05); }
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-light);
+            transition: var(--transition);
+        }
+
+        body.dark header {
+            background: rgba(15, 23, 42, 0.8);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 500;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 2px solid var(--border-light);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(15deg);
+            border-color: var(--primary);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 2rem;
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--primary);
+            opacity: 0.3;
+            border-radius: 50%;
+            animation: float 15s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-100px) translateX(50px); }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .hero-greeting {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease 0.2s forwards;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease 0.4s forwards;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease 0.6s forwards;
+        }
+
+        .btn {
+            padding: 0.875rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--border-light);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Styles */
+        section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            margin: 1rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 100%;
+            height: 100%;
+            border: 3px solid var(--primary);
+            border-radius: 16px;
+            z-index: -1;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background: var(--card-light);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid var(--border-light);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+        }
+
+        .skill-card i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .skill-card p {
+            font-weight: 600;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-light);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid var(--border-light);
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .project-desc {
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            padding: 0.5rem 1rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .project-link:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Contact Section */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            background: var(--card-light);
+            color: var(--text-light);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--card-dark);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--card-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+            border: 2px solid var(--border-light);
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 80%;
+                max-width: 300px;
+                background: var(--bg-light);
+                flex-direction: column;
+                padding: 5rem 2rem;
+                transition: right 0.3s ease;
+                border-left: 1px solid var(--border-light);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="code-brackets">&lt;/&gt;</div>
+        </div>
+    </div>
+
+    <!-- Header -->
     <header>
-      <nav>
-        <div class="logo">Mustaali Kanchwala...</div>
-        <ul class="sidebar">
-          <li onclick="closeSidebar()">
-            <a href="#closeSidebar"><i class="fa-solid fa-xmark"></i></a>
-          </li>
-          <li><a href="#home" class="nav-link">Home</a></li>
-          <li><a href="#about" class="nav-link">About</a></li>
-          <li><a href="#education" class="nav-link">Education</a></li>
-          <li><a href="#skills" class="nav-link">Skills</a></li>
-          <li><a href="#projects" class="nav-link">Projects</a></li>
-          <!-- <li><a href="#experience" class="nav-link">Experience</a></li> -->
-          <li><a href="#contact" class="nav-link">Contact</a></li>
-          <li><button class="darkToggle">🌙</button></li>
-        </ul>
-        <ul class="nav-links" id="navLinks">
-          <li class="hidelinks"><a href="#home" class="nav-link">Home</a></li>
-          <li class="hidelinks"><a href="#about" class="nav-link">About</a></li>
-          <li class="hidelinks">
-            <a href="#education" class="nav-link">Education</a>
-          </li>
-          <li class="hidelinks">
-            <a href="#skills" class="nav-link">Skills</a>
-          </li>
-          <li class="hidelinks">
-            <a href="#projects" class="nav-link">Projects</a>
-          </li>
-          <!-- <li class="hidelinks">
-            <a href="#experience" class="nav-link">Experience</a>
-          </li> -->
-          <li class="hidelinks">
-            <a href="#contact" class="nav-link">Contact</a>
-          </li>
-          <li class="hidelinks"><button class="darkToggle">🌙</button></li>
-          <li class="menu-button" onclick="showSidebar()">
-            <a href="#showSidebar"><i class="fa-solid fa-bars"></i></a>
-          </li>
-        </ul>
-      </nav>
+        <nav>
+            <div class="logo">&lt;MK /&gt;</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><button class="theme-toggle" id="themeToggle">🌙</button></li>
+            </ul>
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
     </header>
 
-    <section id="home" class="animate-section">
-      <h1 class="animate__animated">Hello, I'm Mustaali Kanchwala</h1>
-      <p class="animate__animated">Software Developer</p>
-      <div class="home-links animate__animated">
-        <a href="https://www.linkedin.com/in/mustaali-kanchwala-7a350332a/" target="_blank"
-          >LinkedIn <i class="fa-brands fa-linkedin"></i>
-        </a>
-        <a href="https://github.com/mustaalikanchwala" target="_blank"
-          >Github <i class="fa-brands fa-github"></i>
-        </a>
-        <a href="https://leetcode.com/u/MustaaliKanchwala/" target="_blank"
-          >LeetCode <i class="fas fa-code"></i>
-        </a>
-        <a href="assets/MK_info/MustaaliCV.pdf" download>Download Resume <i class="fa-regular fa-file"></i></a>
-      </div>
-    </section>
-
-    <section id="about" class="animate-section">
-      <h2 class="animate__animated">About Me</h2>
-      <div class="about-container">
-        <img src="/assets/MK_info/mustaali.jpg" alt="Mustaali Kanchwala" class="animate__animated" />
-        <p class="animate__animated">
-          I'm Mustaali, a B.E. Information Technology student at Mumbai
-          University, building a strong foundation in Java and web technologies
-          like HTML, CSS, and JavaScript. I enjoy writing clean, efficient code
-          to solve real-world problems. My passion lies in backend development
-          with Java and crafting responsive, user-friendly frontends. I’m
-          constantly learning through practical projects, collaboration, and
-          exploring new technologies. I’m eager to contribute to full-stack
-          projects and gain industry experience through internships or trainee
-          roles. Let’s connect to build something amazing!
-        </p>
-      </div>
-    </section>
-
-    <section id="education" class="animate-section">
-      <h2 class="animate__animated">Education</h2>
-      <div class="education-container">
-        <div class="education-item animate__animated">
-          <h3>Bachelor of Engineering in IT</h3>
-          <p class="school">SLRTCE, Mumbai University</p>
-          <p class="duration">2024 - 2028</p>
-          <p class="sgpa">SGPA: 7.65</p>
-          <p class="description">
-            Focused on Data Structures, Web Development, and UI/UX. Active in
-            tech fests and coding competitions.
-          </p>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="particles" id="particles"></div>
+        <div class="hero-content">
+            <div class="hero-greeting">Hello, I'm</div>
+            <h1 class="hero-title">Mustaali Kanchwala</h1>
+            <p class="hero-subtitle">Software Developer & Problem Solver</p>
+            <div class="hero-cta">
+                <a href="#projects" class="btn btn-primary">
+                    View Projects <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                    Get In Touch <i class="fas fa-envelope"></i>
+                </a>
+            </div>
         </div>
-        <div class="education-item animate__animated">
-          <h3>HSC</h3>
-          <p class="school">Royal College of Arts, Science and Commerce</p>
-          <p class="duration">2022 - 2024</p>
-          <p class="score">Score: 78%</p>
-          <p class="description">
-            Science stream, specializing in PCM with Economics.
-          </p>
-        </div>
-      </div>
     </section>
 
-    <section id="skills" class="animate-section">
-      <h2 class="animate__animated">Skills</h2>
-      <div class="skills-container">
-        <table class="skills-table">
-          <tbody>
-            <tr>
-              <td class="skill-card animate__animated">
-                <i class="fa-brands fa-java"></i>
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-grid">
+            <div class="about-image">
+                <img src="/assets/MK_info/mustaali.jpg" alt="Mustaali Kanchwala" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect fill=%22%232563eb%22 width=%22300%22 height=%22300%22/%3E%3Ctext fill=%22white%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 font-size=%2260%22%3EMK%3C/text%3E%3C/svg%3E'">
+            </div>
+            <div class="about-text">
+                <p>I'm a passionate B.E. Information Technology student at Mumbai University, specializing in building robust backend systems and intuitive user interfaces.</p>
+                <p>With a strong foundation in Java and modern web technologies, I focus on writing clean, maintainable code that solves real-world problems. My expertise spans full-stack development, with particular interest in backend architecture and responsive frontend design.</p>
+                <p>I'm constantly expanding my knowledge through hands-on projects and collaborative learning. Currently seeking opportunities to contribute to innovative full-stack projects and gain industry experience.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <i class="fab fa-java"></i>
                 <p>Java</p>
-              </td>
-            </tr>
-            <tr>
-              <td class="skill-card animate__animated">
-                <i class="fa-brands fa-js"></i>
+            </div>
+            <div class="skill-card">
+                <i class="fab fa-js"></i>
                 <p>JavaScript</p>
-              </td>
-            </tr>
-            <tr>
-              <td class="skill-card animate__animated">
-                <i class="fa-solid fa-database"></i>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-database"></i>
                 <p>SQL</p>
-              </td>
-            </tr>
-            <tr>
-              <td class="skill-card animate__animated">
-                <i class="fa-solid fa-c"></i>
-                <p>C</p>
-              </td>
-            </tr>
-            <tr>
-              <td class="skill-card animate__animated">
-                <i class="fa-solid fa-code"></i>
-                <p>C#</p>
-              </td>
-            </tr>
-            <tr>
-              <td class="skill-card animate__animated">
-                <i class="fa-brands fa-html5"></i>
-                <p>HTML</p>
-              </td>
-            </tr>
-            <tr>
-              <td class="skill-card animate__animated">
-                <i class="fa-brands fa-css3-alt"></i>
-                <p>CSS</p>
-              </td>
-            </tr>
-            <tr>
-              <td class="skill-card animate__animated">
-                <i class="fa-brands fa-bootstrap"></i>
+            </div>
+            <div class="skill-card">
+                <i class="fab fa-react"></i>
+                <p>React</p>
+            </div>
+            <div class="skill-card">
+                <i class="fab fa-html5"></i>
+                <p>HTML5</p>
+            </div>
+            <div class="skill-card">
+                <i class="fab fa-css3-alt"></i>
+                <p>CSS3</p>
+            </div>
+            <div class="skill-card">
+                <i class="fab fa-bootstrap"></i>
                 <p>Bootstrap</p>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section id="projects" class="animate-section">
-      <h2 class="animate__animated">Projects</h2>
-      <div class="projects-container">
-        <div class="project-card animate__animated">
-          <h3>Find Your Shoe Size?</h3>
-          <p class="project-description">“Our intuitive Shoe Size Converter simplifies finding your perfect fit. Enter your gender, size type (US/EU/UK/Foot Length), and size to get precise conversions displayed in a sleek table. With a modern design, smooth animations, and accurate calculations for men and women, it’s your go-to tool for effortless shoe size conversions.”</p>
-          <div class="project-overlay">
-            <p>Professional shoe size converter with foot length support for accurate sizing.</p>
-            <a href="https://find-shoe-size.vercel.app/" target="_blank" class="project-link">Visit Project</a>
-          </div>
-        </div>
-        <div class="project-card animate__animated">
-          <h3>Number Puzzle</h3>
-          <p class="project-description">“Build a classic Number Sliding Puzzle game using React, Tailwind, and Vite, where players slide numbered tiles on a 4x4 grid to arrange them in ascending order. Features include tile adjacency logic, board shuffling, move handling, win detection, and a responsive UI. Perfect for learning React state and game logic.”</p>
-          <div class="project-overlay">
-            <p>A fun sliding tile puzzle built with React where you move tiles around to get the numbers in order and win the game!</p>
-            <a href="https://number-puzzle-blond.vercel.app/" target="_blank" class="project-link">Visit Project</a>
-          </div>
-        </div>
-        <div class="project-card animate__animated">
-          <h3>Currency Converter</h3>
-          <p class="project-description">“A user-friendly currency converter that allows real-time conversion between multiple currencies. It features up-to-date exchange rates and a simple interface, making it easy to convert amounts instantly and accurately.”</p>
-          <div class="project-overlay">
-            <p>A simple and fast tool for converting currencies with real-time exchange rates.</p>
-            <a href="https://currency-converter-amber-six.vercel.app/" target="_blank" class="project-link">Visit Project</a>
-          </div>
-        </div>
-        <div class="project-card animate__animated">
-          <h3>Tic Tac Toe</h3>
-          <p class="project-description">“A classic Tic Tac Toe game where players compete against each other or an AI opponent. Features a clean interface, real-time score tracking, and smart win/draw detection for an engaging experience.”</p>
-          <div class="project-overlay">
-            <p>A simple and fun Tic Tac Toe game against friends or AI, with instant results.</p>
-            <a href="https://tic-tac-toe-ten-khaki.vercel.app/" target="_blank" class="project-link">Visit Project</a>
-          </div>
-        </div>
-        <div class="project-card animate__animated">
-          <h3>Passward Generator</h3>
-          <p class="project-description">“This Password Generator helps users create secure, customizable passwords. Users can define the password length and choose to include numbers and special characters. It's designed to enhance online security by avoiding weak or easily guessable passwords.”</p>
-          <div class="project-overlay">
-            <p>A simple tool that generates strong, random passwords using length, numbers, and symbols as criteria.</p>
-            <a href="https://password-generator-seven-theta-36.vercel.app/" target="_blank" class="project-link">Visit Project</a>
-          </div>
-        </div>
-        <div class="project-card animate__animated">
-          <h3>Weather Forecast</h3>
-          <p class="project-description">“A Weather Forecast web app that lets users search for any city to view current weather conditions, temperature, and local time using the OpenWeather API. It features a responsive UI, dynamic background changes based on weather, and real-time updates for an engaging user experience.”</p>
-          <div class="project-overlay">
-            <p>A weather forecast web app showing temperature, local time, and conditions using the OpenWeather API.</p>
-            <a href="https://weather-forecast-two-nu.vercel.app/" target="_blank" class="project-link">Visit Project</a>
-          </div>
-        </div>
-        <div class="project-card animate__animated">
-          <h3>TiwariFroge</h3>
-          <p class="project-description">A modern React-based college website for Shree LR Tiwari College of Engineering featuring events, festivals, hackathons, clubs, and community sections. Built with Vite, Tailwind CSS, Framer Motion animations, and Supabase backend. Includes user authentication, join forms, responsive design, and smooth page transitions for an engaging student experience.</p>
-          <div class="project-overlay">
-            <p>A comprehensive React college website with events management, club/community sections, user authentication, and modern animations built using Vite, Tailwind CSS, and Supabase.</p>
-            <a href="https://tiwarifroge.onrender.com" target="_blank" class="project-link">Visit Project</a>
-          </div>
-        </div>
-         <div class="project-card animate__animated">
-            <h3>Portfolio Website</h3>
-            <p class="project-description">A personal portfolio showcasing my skills and projects, built with HTML, CSS, JavaScript, and Bootstrap for a responsive design.</p>
-            <div class="project-overlay">
-              <p>This very website! Designed with a focus on clean UI, animations, and accessibility.</p>
-              <a href="https://mustaaliportfolio.vercel.app/" target="_blank" class="project-link">Visit Project</a>
             </div>
-          </div>
-          <div class="project-card animate__animated">
-            <h3>ToDo</h3>
-            <p class="project-description">“A dynamic React To-Do app using Context API and localStorage to add, edit, delete, and complete tasks with instant visual feedback like strikethrough and color changes. Data persists across sessions, ensuring seamless productivity tracking and an organized workflow every time you open the app.”</p>
-            <div class="project-overlay">
-              <p>React To-Do app with Context API and localStorage for persistent, real-time task management and visual updates.</p>
-              <a href="https://todo-z07g.onrender.com" target="_blank" class="project-link">Visit Project</a>
+            <div class="skill-card">
+                <i class="fab fa-git-alt"></i>
+                <p>Git</p>
             </div>
-          </div>
-        <div class="project-card animate__animated">
-          <h3>BMI Calculator</h3>
-          <p class="project-description">“Building this BMI Calculator pushed me to deepen my understanding of HTML structure, CSS styling, and JavaScript logic—all while emphasizing clean code, user experience, and responsive design.”</p>
-          <div class="project-overlay">
-            <p>A beginner‑friendly BMI Calculator built with semantic HTML, responsive CSS, and vanilla JavaScript.</p>
-            <a href="https://mustaalikanchwala.github.io/BMI-Calculator/" target="_blank" class="project-link">Visit Project</a>
-          </div>
         </div>
-        <div class="project-card animate__animated">
-          <h3>Guess The number</h3>
-          <p class="project-description">This Guess the Random Number game lets users guess a number generated by JavaScript, giving feedback like "too high" or "too low." It helps beginners practice logic building, conditional statements, loops, DOM manipulation, event handling, and user interaction, making it a fun way to improve coding skills.</p>
-          <div class="project-overlay">
-            <p>A fun beginner JavaScript project where users guess a random number, enhancing logic building, conditional statements, loops, DOM manipulation, and user interaction skills.</p>
-            <a href="https://mustaalikanchwala.github.io/Guess-Number/" target="_blank" class="project-link">Visit Project</a>
-          </div>
-        </div>
-        <div class="project-card animate__animated">
-          <h3>BG-Colour-Change</h3>
-          <p class="project-description">“A background color change feature in React allows users to switch the page's background dynamically using buttons. It uses `useState` to manage the current color and updates the CSS style on change, making the UI interactive and visually engaging. Ideal for themes or personalization.”</p>
-          <div class="project-overlay">
-            <p>A React feature to dynamically change background color using state for interactive UI.</p>
-            <a href="https://bg-change-react-izg2.vercel.app/" target="_blank" class="project-link">Visit Project</a>
-          </div>
-        </div>
-        <div class="project-card animate__animated">
-          <h3>Detect-Keys</h3>
-          <p class="project-description">“Detect Keys** is a JavaScript project that captures and displays key presses in real-time. Using HTML to structure a table and CSS for styling, it listens to `keydown` events and shows the key, key code, and key name instantly on screen. Great for learning about events and DOM manipulation.”</p>
-          <div class="project-overlay">
-            <p>Detect Keys is a JavaScript project that captures key presses in real-time, displaying the key, key code, and key name using HTML, CSS, and `keydown` events for interactive learning.</p>
-            <a href="https://mustaalikanchwala.github.io/Detect-Keys/" target="_blank" class="project-link">Visit Project</a>
-          </div>
-        </div>
-      </div>
     </section>
 
-    <!-- <section id="experience" class="animate-section">
-      <h2 class="animate__animated">Work Experience</h2>
-      <div class="experience-item animate__animated">
-        <h3>Backend Developer Intern</h3>
-        <p>
-          Developing server-side logic and API integration using .NET (C#).
-          Assisting with SQL Server tasks, including writing queries and managing
-          data. Collaborating with the team, participating in code reviews, and
-          learning backend architecture best practices in a real-world project
-          environment.
-        </p>
-      </div>
-    </section> -->
-
-    <section id="contact" class="animate-section">
-      <h2 class="animate__animated">Contact Me</h2>
-      <form id="contactForm" class="animate__animated">
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <input
-          type="tel"
-          name="phone"
-          placeholder="Your Contact No."
-          required
-        />
-        <textarea name="message" placeholder="Your Message" required></textarea>
-       <button class="send-button" type="submit">
-  <img src="assets/icons/message.gif" alt="Send Icon" width="20" height="20">
-  <span>Send Message</span>
-</button>
-
-      </form>
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-content">
+                    <h3 class="project-title">TiwariFroge</h3>
+                    <p class="project-desc">Modern React college website featuring events management, authentication, and community sections. Built with Vite, Tailwind CSS, and Supabase.</p>
+                    <div class="project-links">
+                        <a href="https://tiwarifroge.onrender.com" target="_blank" class="project-link">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-content">
+                    <h3 class="project-title">Weather Forecast</h3>
+                    <p class="project-desc">Real-time weather application using OpenWeather API with dynamic backgrounds and responsive UI for current conditions and forecasts.</p>
+                    <div class="project-links">
+                        <a href="https://weather-forecast-two-nu.vercel.app/" target="_blank" class="project-link">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-content">
+                    <h3 class="project-title">ToDo App</h3>
+                    <p class="project-desc">React-based task management with Context API and localStorage for persistent data, featuring real-time updates and visual feedback.</p>
+                    <div class="project-links">
+                        <a href="https://todo-z07g.onrender.com" target="_blank" class="project-link">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-content">
+                    <h3 class="project-title">Number Puzzle</h3>
+                    <p class="project-desc">Classic sliding tile puzzle game built with React, demonstrating state management and game logic implementation.</p>
+                    <div class="project-links">
+                        <a href="https://number-puzzle-blond.vercel.app/" target="_blank" class="project-link">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-content">
+                    <h3 class="project-title">Shoe Size Converter</h3>
+                    <p class="project-desc">Professional conversion tool supporting US/EU/UK sizes with foot length measurements and modern, responsive design.</p>
+                    <div class="project-links">
+                        <a href="https://find-shoe-size.vercel.app/" target="_blank" class="project-link">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-content">
+                    <h3 class="project-title">Currency Converter</h3>
+                    <p class="project-desc">Real-time currency conversion tool with up-to-date exchange rates and intuitive user interface.</p>
+                    <div class="project-links">
+                        <a href="https://currency-converter-amber-six.vercel.app/" target="_blank" class="project-link">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <footer class="animate-section">
-      <div class="footer-container">
-        <div class="footer-logo animate__animated">
-          <i class="fas fa-code"></i> Mustaali Kanchwala
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <form class="contact-form" id="contactForm">
+            <div class="form-group">
+                <input type="text" name="name" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" name="email" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+                <input type="tel" name="phone" placeholder="Your Phone Number" required>
+            </div>
+            <div class="form-group">
+                <textarea name="message" placeholder="Your Message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">
+                Send Message <i class="fas fa-paper-plane"></i>
+            </button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/mustaali-kanchwala-7a350332a/" target="_blank" class="social-link">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/mustaalikanchwala" target="_blank" class="social-link">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://leetcode.com/u/MustaaliKanchwala/" target="_blank" class="social-link">
+                    <i class="fas fa-code"></i>
+                </a>
+                <a href="mailto:kanchwalamustaali@gmail.com" class="social-link">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+            <p>&copy; 2025 Mustaali Kanchwala. Built with passion for code.</p>
         </div>
-        <div class="footer-nav animate__animated">
-          <h3>Quick Links</h3>
-          <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <!-- <li><a href="#experience">Experience</a></li> -->
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-social animate__animated">
-          <h3>Connect with Me</h3>
-          <ul>
-            <li>
-              <a href="https://www.linkedin.com/in/mustaali-kanchwala-7a350332a/" target="_blank">
-                <i class="fab fa-linkedin"></i> LinkedIn
-              </a>
-            </li>
-            <li>
-              <a href="https://github.com/mustaalikanchwala" target="_blank">
-                <i class="fab fa-github"></i> GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://leetcode.com/u/MustaaliKanchwala/" target="_blank">
-                <i class="fas fa-code"></i> LeetCode
-              </a>
-            </li>
-            <li>
-             <a href="MK_info/MustaaliCV.pdf" download> <i class="fa-regular fa-file"></i> Download Resume </a>
-            </li>
-          </ul>
-        </div>
-        <div class="footer-contact animate__animated">
-          <h3>Contact Info</h3>
-          <p>
-            <i class="fas fa-map-marker-alt"></i> Mumbai, Maharashtra, India
-          </p>
-          <p><i class="fas fa-envelope"></i> kanchwalamustaali@gmail.com</p>
-          <p><i class="fas fa-phone"></i> +91 9076212155</p>
-        </div>
-      </div>
-      <div class="footer-copyright animate__animated">
-        <p>© 2025 Mustaali Kanchwala. All rights reserved.</p>
-      </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        // Initialize EmailJS
+        emailjs.init("I0b1Hh3VE5OoFENef");
 
- <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-</script>
-<script type="text/javascript">
-   (function(){
-      emailjs.init({
-        publicKey: "I0b1Hh3VE5OoFENef",
-      });
-   })();
-</script>
+        // Loader
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 1000);
+        });
 
-  </body>
+        // Particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particlesContainer.appendChild(particle);
+        }
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const savedTheme = localStorage.getItem('theme');
+        
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark');
+            themeToggle.textContent = '☀️';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark');
+            const isDark = document.body.classList.contains('dark');
+            themeToggle.textContent = isDark ? '☀️' : '🌙';
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+
+        // Mobile Menu
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Form Submission
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const formData = {
+                name: e.target.name.value,
+                email: e.target.email.value,
+                phone: e.target.phone.value,
+                message: e.target.message.value
+            };
+
+            emailjs.send("service_0w42zxx", "template_el48m85", formData)
+                .then(() => {
+                    alert('Message sent successfully! I\'ll get back to you soon.');
+                    e.target.reset();
+                })
+                .catch((error) => {
+                    alert('Failed to send message. Please try again or contact me directly.');
+                    console.error('EmailJS Error:', error);
+                });
+        });
+
+        // Scroll Animation Observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections and cards
+        document.querySelectorAll('section, .skill-card, .project-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Active nav link on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section[id]');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
 </html>
